@@ -57,7 +57,7 @@
             </div>
 
         </div>
-
         @livewireScripts
+        @include('components.alert.alert')
     </body>
 </html>
