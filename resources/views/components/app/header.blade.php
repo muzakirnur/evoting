@@ -19,6 +19,9 @@
                         <rect x="4" y="17" width="16" height="2" />
                     </svg>
                 </button>
+                <div class="p-2">
+                    <h2 class="font-semibold">Aplikasi E-Voting Pemilihan Kepala Desa</h2>
+                </div>
 
             </div>
 
