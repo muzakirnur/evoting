@@ -10,8 +10,8 @@
         @csrf
         <div class="space-y-4">
             <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" type="email" name="email" :value="old('email')" required autofocus />                
+                <x-jet-label for="username" value="{{ __('Username') }}" />
+                <x-jet-input id="username" type="username" name="username" :value="old('username')" required autofocus />                
             </div>
             <div>
                 <x-jet-label for="password" value="{{ __('Password') }}" />
@@ -34,9 +34,9 @@
     <x-jet-validation-errors class="mt-4" />   
     <!-- Footer -->
     <div class="pt-5 mt-6 border-t border-slate-200">
-        <div class="text-sm">
+        {{-- <div class="text-sm">
             {{ __('Don\'t you have an account?') }} <a class="font-medium text-indigo-500 hover:text-indigo-600" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
-        </div>
+        </div> --}}
         <!-- Warning -->
         <div class="mt-5">
             <div class="bg-amber-100 text-amber-600 px-3 py-2 rounded">
