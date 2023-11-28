@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'username' => 'admin',
+            'pendidikan' => fake()->randomElement(['Sarjana', 'Magister', 'SMA', 'SMP']),
+            'alamat' => fake()->address(),
+            'tanggal_lahir' => fake()->dateTimeBetween(),
             'password' => Hash::make('password')
         ]);
     }

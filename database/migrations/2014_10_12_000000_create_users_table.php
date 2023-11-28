@@ -17,11 +17,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
+            $table->date('tanggal_lahir');
+            $table->string('alamat');
+            $table->string('pendidikan');
+            $table->string('jabatan')->nullable();
+            $table->string('tempat_lahir')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
     }
