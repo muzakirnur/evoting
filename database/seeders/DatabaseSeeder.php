@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'pendidikan' => fake()->randomElement(['Sarjana', 'Magister', 'SMA', 'SMP']),
             'alamat' => fake()->address(),
             'tanggal_lahir' => fake()->dateTimeBetween(),
+            'is_admin' => true,
             'password' => Hash::make('password')
         ]);
     }
