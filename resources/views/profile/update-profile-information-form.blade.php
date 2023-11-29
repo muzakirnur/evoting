@@ -59,11 +59,37 @@
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
-        <!-- Email -->
+        <!-- username -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
-            <x-jet-input-error for="email" class="mt-2" />
+            <x-jet-label for="name" value="{{ __('Username') }}" />
+            <input type="text" class="form-input w-full mt-1 block" wire:model.defer='state.username' readonly>
+            <x-jet-input-error for="name" class="mt-2" />
+        </div>
+
+        <!-- Tanggal Lahir -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="tanggal_lahir" value="{{ __('Tanggal Lahir') }}" />
+            <x-jet-input id="tanggal_lahir" type="date" class="mt-1 block w-full" wire:model.defer="state.tanggal_lahir"/>
+            <x-jet-input-error for="tanggal_lahir" class="mt-2" />
+        </div>
+        {{-- Alamat --}}
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="alamat" value="{{ __('Alamat') }}" />
+            <x-jet-input id="alamat" type="text" class="mt-1 block w-full" wire:model.defer="state.alamat"/>
+            <x-jet-input-error for="alamat" class="mt-2" />
+        </div>
+        {{-- Pendidikan --}}
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="pendidikan" value="{{ __('Pendidikan') }}" />
+            <select id="pendidikan" class="form-input w-full" wire:model.defer='state.pendidikan'>
+                <option hidden>Pilih Pendidikan</option>
+                <option value="SD">SD</option>
+                <option value="SMP">SMP</option>
+                <option value="SMA">SMA</option>
+                <option value="Sarjana">Sarjana</option>
+                <option value="Magister">Magister</option>
+            </select>
+            <x-jet-input-error for="pendidikan" class="mt-2" />
         </div>
     </x-slot>
 
