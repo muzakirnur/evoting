@@ -3,7 +3,7 @@ import "./bootstrap";
 import Alpine from "alpinejs";
 
 // Import Sweetalert2
-import Swal from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.all";
 
 // Import Chart.js
 import { Chart } from "chart.js";
@@ -28,6 +28,8 @@ import dashboardCard11 from "./components/dashboard-card-11";
 // Call Alpine
 window.Alpine = Alpine;
 Alpine.start();
+
+window.Swal = Swal;
 
 // Define Chart.js default settings
 /* eslint-disable prefer-destructuring */
