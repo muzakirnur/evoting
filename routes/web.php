@@ -23,6 +23,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('jadwal', function(){
+        return view('pages.jadwal.index');
+    })->name('jadwal.index');
     Route::fallback(function() {
         return view('pages/utility/404');
     });    
