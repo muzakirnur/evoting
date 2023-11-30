@@ -32,6 +32,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('panitia', function(){
             return view('pages.panitia.index');
         })->name('panitia.index');
+
+        Route::get('calon', function(){
+            return view('pages.calon.index');
+        })->name('calon.index');
     });
     
     Route::fallback(function() {
