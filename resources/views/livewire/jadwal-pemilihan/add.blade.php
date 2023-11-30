@@ -1,5 +1,5 @@
 <div class="p-5">
-    <h3 class="font-semibold text-md">Tambah Jadwal Pemilihan</h3>
+    <h3 class="font-semibold text-md">{{ $schedule ? 'Edit' : 'Tambah' }} Jadwal Pemilihan</h3>
     <hr class="mb-4">
     <form wire:submit.prevent="save">
         <div class="mb-4">

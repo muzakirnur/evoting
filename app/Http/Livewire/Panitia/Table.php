@@ -17,7 +17,7 @@ class Table extends Component
         return view('livewire.panitia.table', [
             'data' => User::query()->where('is_admin', true)->when($this->search, function($query, $search){
                 return $query->where('name', 'LIKE', '%'.$search.'%');
-            })->where('id', '!=', auth()->id())->paginate($this->paginate),
+            })->where('id', '!=', auth()->id())->latest()->paginate($this->paginate),
         ]);
     }
 

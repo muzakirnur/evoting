@@ -19,7 +19,7 @@ class Table extends Component
         return view('livewire.jadwal-pemilihan.table', [
             'data' => Schedule::query()->when($this->search, function($query, $search){
                 return $query->where('tahun', 'LIKE', '%'.$search.'%');
-            })->paginate($this->paginate),
+            })->latest()->paginate($this->paginate),
         ]);
     }
 

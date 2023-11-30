@@ -18,9 +18,12 @@ return new class extends Migration
             $table->foreignId('schedule_id')->constrained();
             $table->string('nomer_urut');
             $table->string('nama');
+            $table->string('foto');
             $table->string('alamat');
+            $table->string('pendidikan');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
+            $table->text('visi_misi');
             $table->timestamps();
         });
     }
