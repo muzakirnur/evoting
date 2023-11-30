@@ -61,7 +61,7 @@ class Add extends ModalComponent
         );
 
         $this->dispatchBrowserEvent('messages', [
-            'title' => 'Jadwal Berhasil ditambahkan!',
+            'title' => 'Jadwal Berhasil disimpan!',
             'icon' => 'success',
             'iconColor' => 'green'
         ]);
