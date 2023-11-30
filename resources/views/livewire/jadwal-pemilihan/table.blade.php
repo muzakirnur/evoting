@@ -70,8 +70,8 @@
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent">
                                 <div class="flex flex-wrap gap-1 justify-end">
-                                    {{-- <button type="button" class="btn bg-cyan-500 hover:bg-cyan-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'satuan.edit-satuan',{{ json_encode(["satuan" => $satuan->id]) }})">Edit</button>
-                                    <button type="button" class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='destroy({{ $satuan->id }})'>Delete</button> --}}
+                                    <button type="button" class="btn bg-cyan-500 hover:bg-cyan-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'jadwal-pemilihan.add',{{ json_encode(["schedule" => $row->id]) }})">Edit</button>
+                                    <button type="button" class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='destroy({{ $row->id }})'>Hapus</button>
                                 </div>
                             </td>
                         </tr>
