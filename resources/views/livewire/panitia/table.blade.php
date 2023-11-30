@@ -4,7 +4,7 @@
             class="p-4 relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-sm bg-clip-border">
             <div class="flex flex-wrap mb-4 justify-between">
                 <div class="w-full lg:w-1/2 mb-4 lg:text-start align-middle text-center">
-                    <input type="text" class="border-slate-400 rounded-lg" placeholder="Cari Panitia.." wire:model="search" wire:click="$refresh">
+                    <input type="text" class="border-slate-400 rounded-lg" placeholder="Cari Panitia.." wire:model.debounce.500ms="search" wire:click="$refresh">
                     <select wire:model='paginate' class="rounded-lg">
                         <option value="10">10</option>
                         <option value="25">25</option>
