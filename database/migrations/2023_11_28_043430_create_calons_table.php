@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('pendidikan');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->text('visi_misi');
+            $table->longText('visi_misi');
             $table->timestamps();
         });
     }

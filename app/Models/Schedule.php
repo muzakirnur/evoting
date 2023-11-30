@@ -27,4 +27,6 @@ class Schedule extends Model
     {
         return $this->hasOne(Result::class);
     }
+
+    protected $richTextFields = ['visi_misi'];
 }

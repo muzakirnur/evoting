@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Calon;
 
 use App\Models\Calon;
 use App\Models\Schedule;
+use DateTime;
 use Livewire\Component;
 
 class Table extends Component
@@ -11,6 +12,8 @@ class Table extends Component
     public $search;
     public $paginate;
     public $tahun;
+
+    protected $listeners = ['calon-added' => '$refresh'];
     public function render()
     {
         return view('livewire.calon.table', [
@@ -21,5 +24,35 @@ class Table extends Component
             })->latest()->paginate($this->paginate),
             'pemilihan' => Schedule::all(),
         ]);
+    }
+
+    public function destroy($id)
+    {
+        $calon = Calon::findOrFail($id);
+        if($calon){
+            if($this->checkSchedule($calon->schedule_id) == true){
+                $calon->delete();
+                $this->dispatchBrowserEvent('messages', [
+                    'title' => 'Calon Berhasil dihapus!',
+                    'icon' => 'success',
+                    'iconColor' => 'green'
+                ]);
+            }else{
+                $this->dispatchBrowserEvent('messages', [
+                    'title' => 'Gagal Menghapus Calon!',
+                    'icon' => 'warning',
+                    'iconColor' => 'yellow'
+                ]);
+            }
+        }
+        
+    }
+
+    public function checkSchedule($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        $dateNow = new DateTime();
+        $dateStart = new DateTime($schedule->start_time);
+        return $dateNow < $dateStart ? true : false;
     }
 }

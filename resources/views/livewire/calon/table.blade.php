@@ -28,6 +28,9 @@
                         <tr>
                             <th
                                 class="p-2 pl-2 font-normal lg:font-bold text-left uppercase bg-transparent border-b border-gray-200 shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                </th>
+                            <th
+                                class="p-2 pl-2 font-normal lg:font-bold text-center uppercase bg-transparent border-b border-gray-200 shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                 Tahun Pemilihan</th>
                             <th
                                 class="p-2 pl-2 font-normal lg:font-bold text-center uppercase bg-transparent border-b border-gray-200 shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
@@ -51,33 +54,38 @@
                         <tr>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent">
                                 <p class="mb-0 text-sm font-semibold leading-tight">
-                                    {{-- {{ $row->tahun }} --}}
+                                    <img src="{{ asset('storage/'. $row->foto) }}" alt="{{ $row->nama }}" class="w-24 h-24 rounded-lg">
                                 </p>
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">
                                 <p class="mb-0 text-sm font-semibold leading-tight">
-                                    {{-- {{ date('d F Y', strtotime($row->start_time)) }} --}}
+                                    {{ $row->schedule->tahun }}
                                 </p>
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">
                                 <p class="mb-0 text-sm font-semibold leading-tight">
-                                    {{-- {{ date('H:i', strtotime($row->start_time)) }} --}}
+                                    {{ $row->nomer_urut }}
                                 </p>
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">
                                 <p class="mb-0 text-sm font-semibold leading-tight">
-                                    {{-- {{ date('d F Y', strtotime($row->end_time)) }} --}}
+                                    {{ $row->nama }}
                                 </p>
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">
                                 <p class="mb-0 text-sm font-semibold leading-tight">
-                                    {{-- {{ date('H:i', strtotime($row->end_time)) }} --}}
+                                    {{ $row->tempat_lahir }}
+                                </p>
+                            </td>
+                            <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">
+                                <p class="mb-0 text-sm font-semibold leading-tight">
+                                    {{ date('d F Y', strtotime($row->tanggal_lahir)) }}
                                 </p>
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent">
                                 <div class="flex flex-wrap gap-1 justify-end">
-                                    {{-- <button type="button" class="btn bg-cyan-500 hover:bg-cyan-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'jadwal-pemilihan.add',{{ json_encode(["schedule" => $row->id]) }})">Edit</button>
-                                    <button type="button" class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='destroy({{ $row->id }})'>Hapus</button> --}}
+                                    {{-- <button type="button" class="btn bg-cyan-500 hover:bg-cyan-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'calon.add',{{ json_encode(["calon" => $row->id]) }})">Edit</button> --}}
+                                    <button type="button" class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='destroy({{ $row->id }})'>Hapus</button>
                                 </div>
                             </td>
                         </tr>
