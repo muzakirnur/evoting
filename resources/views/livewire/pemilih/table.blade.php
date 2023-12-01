@@ -78,7 +78,7 @@
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent">
                                 <div class="flex flex-wrap gap-1 justify-end">
-                                    {{-- <button type="button" class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='destroy({{ $row->id }})'>Hapus</button> --}}
+                                    <button type="button" class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='destroy({{ $row->id }})'>Hapus</button>
                                 </div>
                             </td>
                         </tr>

@@ -35,7 +35,9 @@ class User extends Authenticatable
         'jabatan',
         'foto',
         'is_admin',
-        'profile_photo_path'
+        'profile_photo_path',
+        'tempat_lahir',
+        'jenis_kelamin',
     ];
 
     /**
