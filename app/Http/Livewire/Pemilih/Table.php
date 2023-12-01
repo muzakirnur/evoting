@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Pemilih;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Table extends Component
 {
+    use WithPagination;
     public $paginate;
     public $search;
 

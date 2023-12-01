@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Panitia;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Table extends Component
 {
+    use WithPagination;
     public $search;
     public $paginate;
 

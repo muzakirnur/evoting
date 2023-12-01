@@ -6,9 +6,11 @@ use App\Models\Calon;
 use App\Models\Schedule;
 use DateTime;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Table extends Component
 {
+    use WithPagination;
     public $search;
     public $paginate;
     public $tahun;
