@@ -36,6 +36,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('calon', function(){
             return view('pages.calon.index');
         })->name('calon.index');
+
+        Route::get('pemilih', function(){
+            return view('pages.pemilih.index');
+        })->name('pemilih.index');
     });
     
     Route::fallback(function() {
