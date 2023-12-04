@@ -46,7 +46,7 @@ class Add extends ModalComponent
     public function save()
     {
         $this->validate();
-        Calon::create(
+        $calon = Calon::create(
             [
                 'schedule_id' => $this->tahunPemilihan,
                 'nama' => $this->name,

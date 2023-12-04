@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->longText('visi_misi');
+            $table->integer('vote')->nullable();
             $table->timestamps();
         });
     }

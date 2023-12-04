@@ -24,11 +24,10 @@ return new class extends Migration
                 'created_at' => $calons->created_at,
                 'updated_at' => $calons->updated_at
             ]);
-
-            Schema::table('calons', function(Blueprint $table){
-                $table->dropColumn('visi_misi');
-            });
         }
+        Schema::table('calons', function(Blueprint $table){
+            $table->dropColumn('visi_misi');
+        });
     }
 
     /**

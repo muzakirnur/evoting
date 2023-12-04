@@ -26,6 +26,7 @@ class Calon extends Model
         'tempat_lahir',
         'pendidikan',
         'tanggal_lahir',
+        'vote'
     ];
 
     public function schedule():BelongsTo

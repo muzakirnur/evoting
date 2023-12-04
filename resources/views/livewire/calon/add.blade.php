@@ -68,7 +68,8 @@
                 </div>
                 <div class="w-full mb-4 p-2">
                     <label for="visi_misi" class="text-base font-semibold">Visi & Misi</label>
-                    <x-trix-field wire:model.defer='visi_misi' name="visi_misi" id="visi_misi"/>
+                    <input type="hidden" name="visi_misi" id="x">
+                    <x-trix-field input="x" wire:model.defer="visi_misi" name="visi_misi" id="x"></x-trix-field>
                     @error('visi_misi') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
             </div>

@@ -21,12 +21,13 @@ use Carbon\Carbon;
         {
             if(auth()->user()->is_admin == false){
                 return redirect()->route('vote.index');
+            }else{
+                $dataFeed = new DataFeed();
+                $daftarPemilihTetap = User::query()->where('is_admin', false)->count();
+                $daftarPanitia = User::query()->where('is_admin', true)->count();
+                $vote = Vote::all()->count();
+    
+                return view('pages/dashboard/dashboard', compact('dataFeed', 'daftarPemilihTetap', 'daftarPanitia', 'vote'));
             }
-            $dataFeed = new DataFeed();
-            $daftarPemilihTetap = User::query()->where('is_admin', false)->count();
-            $daftarPanitia = User::query()->where('is_admin', true)->count();
-            $vote = Vote::all()->count();
-
-            return view('pages/dashboard/dashboard', compact('dataFeed', 'daftarPemilihTetap', 'daftarPanitia', 'vote'));
         }
     }

@@ -5,26 +5,14 @@
     </div>
     @if (now() >= $start)
         @if (now() >= $end)
-        <div class="w-full bg-white rounded-lg p-4">
-            <div class="w-full mb-8">
-                <h1 class="font-semibold text-lg">Pemilihan Selesai!</h1>
-                <hr>
-            </div>
-            <div class="w-full">
-                <p class="text-center">Pemilihan Telah selesai, Terima Kasih telah berpartisipasi!</p>
-            </div>
-        </div>
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 text-center">
+            <span class="font-medium">Pemilihan telah Selesai!</span> Terima Kasih atas Partisipasinya!
+          </div>
         @else
             @if ($voted != null)
-            <div class="w-full bg-white rounded-lg p-4">
-                <div class="w-full mb-8">
-                    <h1 class="font-semibold text-lg">Anda Sudah Memilih</h1>
-                    <hr>
-                </div>
-                <div class="w-full">
-                    <p class="text-center">Anda sudah melakukan pemilihan ! Terima Kasih atas Partisipasinya!</p>
-                </div>
-            </div>
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 text-center">
+                <span class="font-medium">Anda Sudah Memilih!</span> Terima Kasih atas Partisipasinya!
+              </div>
             @else
             <div class="grid grid-cols-3 grid-flow-col gap-4">
                 @foreach ($data as $calon)
