@@ -1,42 +1,29 @@
 // Import Chart.js
 import {
     Chart,
-    BarController,
-    BarElement,
-    LinearScale,
+    DoughnutController,
+    ArcElement,
     TimeScale,
     Tooltip,
-    Legend,
 } from "chart.js";
+import "chartjs-adapter-moment";
 
 // Import utilities
-import { tailwindConfig, formatValue } from "../utils";
+import { tailwindConfig } from "../utils";
 
-Chart.register(
-    BarController,
-    BarElement,
-    LinearScale,
-    TimeScale,
-    Tooltip,
-    Legend
-);
+Chart.register(DoughnutController, ArcElement, TimeScale, Tooltip);
 
 // A chart built with Chart.js 3
 // https://www.chartjs.org/
-const dashboardCard04 = () => {
+const dashboardCard06 = () => {
     const ctx = document.getElementById("dashboard-card-04");
     if (!ctx) return;
 
     const darkMode = localStorage.getItem("dark-mode") === "true";
 
-    const textColor = {
-        light: "#94a3b8",
-        dark: "#64748B",
-    };
-
-    const gridColor = {
-        light: "#f1f5f9",
-        dark: "#334155",
+    const tooltipTitleColor = {
+        light: "#1e293b",
+        dark: "#f1f5f9",
     };
 
     const tooltipBodyColor = {
@@ -54,112 +41,47 @@ const dashboardCard04 = () => {
         dark: "#475569",
     };
 
-    fetch("/json-data-feed?datatype=4")
+    fetch("/data-pemilih")
         .then((a) => {
             return a.json();
         })
         .then((result) => {
-            const dataset1 = result.data.slice(0, 6);
-            const dataset2 = result.data.slice(6);
-
+            console.log(result);
             const chart = new Chart(ctx, {
-                type: "bar",
+                type: "doughnut",
                 data: {
-                    labels: result.labels.slice(0, 6),
+                    labels: result.labels,
                     datasets: [
-                        // Light blue bars
                         {
-                            label: "Pemilih",
-                            data: dataset1,
-                            // data: [
-                            //     800, 1600, 900, 1300, 1950, 1700,
-                            // ],
-                            backgroundColor:
-                                tailwindConfig().theme.colors.blue[400],
-                            hoverBackgroundColor:
-                                tailwindConfig().theme.colors.blue[500],
-                            barPercentage: 0.66,
-                            categoryPercentage: 0.66,
-                        },
-                        // Blue bars
-                        {
-                            label: "Indirect",
-                            data: dataset2,
-                            // data: [
-                            //     4900, 2600, 5350, 4800, 5200, 4800,
-                            // ],
-                            backgroundColor:
+                            label: "Suara",
+                            data: result.data,
+                            backgroundColor: [
                                 tailwindConfig().theme.colors.indigo[500],
-                            hoverBackgroundColor:
+                                tailwindConfig().theme.colors.blue[400],
+                                tailwindConfig().theme.colors.indigo[800],
+                            ],
+                            hoverBackgroundColor: [
                                 tailwindConfig().theme.colors.indigo[600],
-                            barPercentage: 0.66,
-                            categoryPercentage: 0.66,
+                                tailwindConfig().theme.colors.blue[500],
+                                tailwindConfig().theme.colors.indigo[900],
+                            ],
+                            borderWidth: 0,
                         },
                     ],
                 },
                 options: {
+                    cutout: "80%",
                     layout: {
-                        padding: {
-                            top: 12,
-                            bottom: 16,
-                            left: 20,
-                            right: 20,
-                        },
-                    },
-                    scales: {
-                        y: {
-                            border: {
-                                display: false,
-                            },
-                            ticks: {
-                                maxTicksLimit: 5,
-                                callback: (value) => formatValue(value),
-                                color: darkMode
-                                    ? textColor.dark
-                                    : textColor.light,
-                            },
-                            grid: {
-                                color: darkMode
-                                    ? gridColor.dark
-                                    : gridColor.light,
-                            },
-                        },
-                        x: {
-                            type: "time",
-                            time: {
-                                parser: "MM-DD-YYYY",
-                                unit: "month",
-                                displayFormats: {
-                                    month: "MMM YY",
-                                },
-                            },
-                            border: {
-                                display: false,
-                            },
-                            grid: {
-                                display: false,
-                            },
-                            ticks: {
-                                color: darkMode
-                                    ? textColor.dark
-                                    : textColor.light,
-                            },
-                        },
+                        padding: 24,
                     },
                     plugins: {
                         legend: {
                             display: false,
                         },
-                        htmlLegend: {
-                            // ID of the container to put the legend in
-                            containerID: "dashboard-card-04-legend",
-                        },
                         tooltip: {
-                            callbacks: {
-                                title: () => false, // Disable tooltip title
-                                label: (context) =>
-                                    formatValue(context.parsed.y),
-                            },
+                            titleColor: darkMode
+                                ? tooltipTitleColor.dark
+                                : tooltipTitleColor.light,
                             bodyColor: darkMode
                                 ? tooltipBodyColor.dark
                                 : tooltipBodyColor.light,
@@ -169,6 +91,10 @@ const dashboardCard04 = () => {
                             borderColor: darkMode
                                 ? tooltipBorderColor.dark
                                 : tooltipBorderColor.light,
+                        },
+                        htmlLegend: {
+                            // ID of the container to put the legend in
+                            containerID: "dashboard-card-04-legend",
                         },
                     },
                     interaction: {
@@ -200,17 +126,26 @@ const dashboardCard04 = () => {
                                 );
                             items.forEach((item) => {
                                 const li = document.createElement("li");
-                                li.style.marginRight =
-                                    tailwindConfig().theme.margin[4];
+                                li.style.margin =
+                                    tailwindConfig().theme.margin[1];
                                 // Button element
                                 const button = document.createElement("button");
-                                button.style.display = "inline-flex";
-                                button.style.alignItems = "center";
+                                button.classList.add(
+                                    "btn-xs",
+                                    "bg-white",
+                                    "dark:bg-slate-800",
+                                    "text-slate-500",
+                                    "dark:text-slate-400",
+                                    "border",
+                                    "border-slate-200",
+                                    "dark:border-slate-700",
+                                    "shadow-md"
+                                );
                                 button.style.opacity = item.hidden ? ".3" : "";
                                 button.onclick = () => {
-                                    c.setDatasetVisibility(
-                                        item.datasetIndex,
-                                        !c.isDatasetVisible(item.datasetIndex)
+                                    c.toggleDataVisibility(
+                                        item.index,
+                                        !item.index
                                     );
                                     c.update();
                                 };
@@ -218,62 +153,26 @@ const dashboardCard04 = () => {
                                 const box = document.createElement("span");
                                 box.style.display = "block";
                                 box.style.width =
-                                    tailwindConfig().theme.width[3];
+                                    tailwindConfig().theme.width[2];
                                 box.style.height =
-                                    tailwindConfig().theme.height[3];
+                                    tailwindConfig().theme.height[2];
+                                box.style.backgroundColor = item.fillStyle;
                                 box.style.borderRadius =
-                                    tailwindConfig().theme.borderRadius.full;
+                                    tailwindConfig().theme.borderRadius.sm;
                                 box.style.marginRight =
-                                    tailwindConfig().theme.margin[2];
-                                box.style.borderWidth = "3px";
-                                box.style.borderColor = item.fillStyle;
+                                    tailwindConfig().theme.margin[1];
                                 box.style.pointerEvents = "none";
                                 // Label
-                                const labelContainer =
-                                    document.createElement("span");
-                                labelContainer.style.display = "flex";
-                                labelContainer.style.alignItems = "center";
-                                const value = document.createElement("span");
-                                value.classList.add(
-                                    "text-slate-800",
-                                    "dark:text-slate-100"
-                                );
-                                value.style.fontSize =
-                                    tailwindConfig().theme.fontSize["3xl"][0];
-                                value.style.lineHeight =
-                                    tailwindConfig().theme.fontSize[
-                                        "3xl"
-                                    ][1].lineHeight;
-                                value.style.fontWeight =
-                                    tailwindConfig().theme.fontWeight.bold;
-                                value.style.marginRight =
-                                    tailwindConfig().theme.margin[2];
-                                value.style.pointerEvents = "none";
                                 const label = document.createElement("span");
-                                label.classList.add(
-                                    "text-slate-500",
-                                    "dark:text-slate-400"
-                                );
-                                label.style.fontSize =
-                                    tailwindConfig().theme.fontSize.sm[0];
-                                label.style.lineHeight =
-                                    tailwindConfig().theme.fontSize.sm[1].lineHeight;
-                                const theValue = c.data.datasets[
-                                    item.datasetIndex
-                                ].data.reduce((a, b) => a + b, 0);
-                                const valueText = document.createTextNode(
-                                    formatValue(theValue)
-                                );
+                                label.style.display = "flex";
+                                label.style.alignItems = "center";
                                 const labelText = document.createTextNode(
                                     item.text
                                 );
-                                value.appendChild(valueText);
                                 label.appendChild(labelText);
                                 li.appendChild(button);
                                 button.appendChild(box);
-                                button.appendChild(labelContainer);
-                                labelContainer.appendChild(value);
-                                labelContainer.appendChild(label);
+                                button.appendChild(label);
                                 ul.appendChild(li);
                             });
                         },
@@ -284,9 +183,8 @@ const dashboardCard04 = () => {
             document.addEventListener("darkMode", (e) => {
                 const { mode } = e.detail;
                 if (mode === "on") {
-                    chart.options.scales.x.ticks.color = textColor.dark;
-                    chart.options.scales.y.ticks.color = textColor.dark;
-                    chart.options.scales.y.grid.color = gridColor.dark;
+                    chart.options.plugins.tooltip.titleColor =
+                        tooltipTitleColor.dark;
                     chart.options.plugins.tooltip.bodyColor =
                         tooltipBodyColor.dark;
                     chart.options.plugins.tooltip.backgroundColor =
@@ -294,9 +192,8 @@ const dashboardCard04 = () => {
                     chart.options.plugins.tooltip.borderColor =
                         tooltipBorderColor.dark;
                 } else {
-                    chart.options.scales.x.ticks.color = textColor.light;
-                    chart.options.scales.y.ticks.color = textColor.light;
-                    chart.options.scales.y.grid.color = gridColor.light;
+                    chart.options.plugins.tooltip.titleColor =
+                        tooltipTitleColor.light;
                     chart.options.plugins.tooltip.bodyColor =
                         tooltipBodyColor.light;
                     chart.options.plugins.tooltip.backgroundColor =
@@ -309,4 +206,4 @@ const dashboardCard04 = () => {
         });
 };
 
-export default dashboardCard04;
+export default dashboardCard06;

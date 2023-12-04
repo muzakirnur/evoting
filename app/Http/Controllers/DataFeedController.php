@@ -5,6 +5,8 @@
 use App\Models\Calon;
 use App\Models\DataFeed;
 use App\Models\Schedule;
+use App\Models\User;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 
     class DataFeedController extends ApiController
@@ -39,6 +41,19 @@ use Illuminate\Http\Request;
             return (object)[
                 'labels' => $calon->values(),
                 'data' => $calon->keys()
+            ];
+        }
+
+        public function dataPemilih()
+        {
+            $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
+            $suaraDipakai = Vote::query()->where('schedule_id', $schedule->id)->count();
+            $totalPemilih = User::query()->where('is_admin', false)->count();
+            $total = $totalPemilih-$suaraDipakai;
+
+            return (object)[
+                'labels' => ['Digunakan', 'Tidak Digunakan'],
+                'data' => [$suaraDipakai, $total],
             ];
         }
     }

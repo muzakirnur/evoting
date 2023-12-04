@@ -25,6 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/data-suara', [DataFeedController::class, 'dataSuara'])->name('data-suara');
+    Route::get('/data-pemilih', [DataFeedController::class, 'dataPemilih'])->name('data-pemilih');
 
     Route::middleware('pemilih')->group(function(){
         Route::get('vote', function(){

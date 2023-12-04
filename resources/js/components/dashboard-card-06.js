@@ -46,7 +46,6 @@ const dashboardCard06 = () => {
             return a.json();
         })
         .then((result) => {
-            console.log(result);
             const chart = new Chart(ctx, {
                 type: "doughnut",
                 data: {
