@@ -50,6 +50,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('pemilih', function(){
             return view('pages.pemilih.index');
         })->name('pemilih.index');
+
+        Route::get('laporan', function(){
+            return view('pages.laporan.index');
+        })->name('laporan.index');
     });
     
     Route::fallback(function() {

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Calon extends Model
@@ -32,6 +33,11 @@ class Calon extends Model
     public function schedule():BelongsTo
     {
         return $this->belongsTo(Schedule::class);
+    }
+
+    public function result():HasMany
+    {
+        return $this->hasMany(Result::class);
     }
 
 }

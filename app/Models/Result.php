@@ -16,4 +16,9 @@ class Result extends Model
     {
         return $this->belongsTo(Schedule::class);
     }
+
+    public function calon():BelongsTo
+    {
+        return $this->belongsTo(Calon::class);
+    }
 }
