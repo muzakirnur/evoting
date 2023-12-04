@@ -24,11 +24,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/data-suara', [DataFeedController::class, 'dataSuara'])->name('data-suara');
 
-    Route::get('vote', function(){
-        $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
-        return view('pages.vote.index', compact('schedule'));
-    })->name('vote.index');
+    Route::middleware('pemilih')->group(function(){
+        Route::get('vote', function(){
+            $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
+            return view('pages.vote.index', compact('schedule'));
+        })->name('vote.index');
+    });
 
     Route::middleware('admin')->group(function(){
         Route::get('jadwal', function(){

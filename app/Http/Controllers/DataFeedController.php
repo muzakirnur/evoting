@@ -2,8 +2,10 @@
 
     namespace App\Http\Controllers;
 
-    use App\Models\DataFeed;
-    use Illuminate\Http\Request;
+use App\Models\Calon;
+use App\Models\DataFeed;
+use App\Models\Schedule;
+use Illuminate\Http\Request;
 
     class DataFeedController extends ApiController
     {
@@ -27,6 +29,16 @@
                     'data',
                     $request->limit
                 ),
+            ];
+        }
+
+        public function dataSuara(Request $request)
+        {
+            $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
+            $calon = Calon::query()->where('schedule_id', $schedule->id)->pluck('nama', 'vote');
+            return (object)[
+                'labels' => $calon->values(),
+                'data' => $calon->keys()
             ];
         }
     }

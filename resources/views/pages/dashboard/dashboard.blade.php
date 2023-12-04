@@ -44,6 +44,7 @@
             <x-dashboard.dashboard-card-03 :dataFeed="$vote" />
 
             <!-- Bar chart (Direct vs Indirect) -->
+            {{-- <livewire:dashboard.bar-suara/> --}}
             <x-dashboard.dashboard-card-04 />
 
             <!-- Line chart (Real Time Value) -->
