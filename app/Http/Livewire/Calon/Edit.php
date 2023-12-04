@@ -31,7 +31,7 @@ class Edit extends ModalComponent
         $this->tempatLahir = $calon->tempat_lahir;
         $this->tanggalLahir = $calon->tanggal_lahir;
         $this->pendidikan = $calon->pendidikan;
-        $this->visi_misi = $calon->visi_misi;
+        $this->visi_misi = $calon->visi_misi->toTrixHtml();
     }
 
     public function rules()
@@ -61,6 +61,7 @@ class Edit extends ModalComponent
                 'tempat_lahir' => $this->tempatLahir,
                 'tanggal_lahir' => $this->tanggalLahir,
                 'pendidikan' => $this->pendidikan,
+                'visi_misi' => $this->visi_misi,
             ]);
 
             if($this->foto){

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Schedule;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('vote', function(){
-        return view('pages.vote.index');
+        $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
+        return view('pages.vote.index', compact('schedule'));
     })->name('vote.index');
 
     Route::middleware('admin')->group(function(){
