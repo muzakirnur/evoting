@@ -1,4 +1,5 @@
 <div>
+    @can('admin')        
     <!-- Sidebar backdrop (mobile only) -->
     <div
         class="fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200"
@@ -124,4 +125,5 @@
         </div>
 
     </div>
+    @endcan
 </div>

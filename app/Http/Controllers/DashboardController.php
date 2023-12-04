@@ -19,6 +19,9 @@ use Carbon\Carbon;
          */
         public function index()
         {
+            if(auth()->user()->is_admin == false){
+                return redirect()->route('vote.index');
+            }
             $dataFeed = new DataFeed();
             $daftarPemilihTetap = User::query()->where('is_admin', false)->count();
             $daftarPanitia = User::query()->where('is_admin', true)->count();

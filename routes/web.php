@@ -24,6 +24,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('vote', function(){
+        return view('pages.vote.index');
+    })->name('vote.index');
+
     Route::middleware('admin')->group(function(){
         Route::get('jadwal', function(){
             return view('pages.jadwal.index');
