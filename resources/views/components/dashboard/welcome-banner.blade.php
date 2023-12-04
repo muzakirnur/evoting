@@ -45,7 +45,7 @@
     <!-- Content -->
     <div class="relative">
         <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Selamat datang, {{ Auth::user()->name }}</h1>
-        <p class="dark:bg-secondary">Here is what's happening with your projects today:</p>
+        <p class="dark:bg-secondary">Berikut adalah data yang mungkin anda butuhkan!</p>
     </div>
 
 </div>

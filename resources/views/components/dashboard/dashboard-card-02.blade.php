@@ -35,14 +35,8 @@
             </div>
         </header>
         <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total</div>
-        <div class="flex items-start">
+        <div class="flex items-start p-2">
             <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $dataFeed }}</div>
         </div>
-    </div>
-    <!-- Chart built with Chart.js 3 -->
-    <!-- Check out src/js/components/dashboard-card-02.js for config -->
-    <div class="grow max-sm:max-h-[128px] xl:max-h-[128px]">
-        <!-- Change the height attribute to adjust the chart height -->
-        <canvas id="dashboard-card-02" width="389" height="128"></canvas>
     </div>
 </div>
