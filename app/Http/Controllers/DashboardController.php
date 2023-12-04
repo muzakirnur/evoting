@@ -5,7 +5,9 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Http;
     use App\Models\DataFeed;
-    use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Vote;
+use Carbon\Carbon;
 
     class DashboardController extends Controller
     {
@@ -18,7 +20,10 @@
         public function index()
         {
             $dataFeed = new DataFeed();
+            $daftarPemilihTetap = User::query()->where('is_admin', false)->count();
+            $daftarPanitia = User::query()->where('is_admin', true)->count();
+            $vote = Vote::all()->count();
 
-            return view('pages/dashboard/dashboard', compact('dataFeed'));
+            return view('pages/dashboard/dashboard', compact('dataFeed', 'daftarPemilihTetap', 'daftarPanitia', 'vote'));
         }
     }

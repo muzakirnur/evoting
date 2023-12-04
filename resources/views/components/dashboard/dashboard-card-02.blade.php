@@ -2,23 +2,10 @@
     <div class="px-5 pt-5">
         <header class="flex justify-between items-start mb-2">
             <!-- Icon -->
-            <img src="{{ asset('images/icon-02.svg') }}" width="32" height="32" alt="Icon 02" />
+            {{-- <img src="{{ asset('images/icon-02.svg') }}" width="32" height="32" alt="Icon 02" /> --}}
+            <i class="fa-solid fa-users text-2xl text-indigo-500"></i>
             <!-- Menu button -->
             <div class="relative inline-flex" x-data="{ open: false }">
-                <button
-                    class="rounded-full"
-                    :class="open ? 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400': 'text-slate-400 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-400'"          
-                    aria-haspopup="true"
-                    @click.prevent="open = !open"
-                    :aria-expanded="open"
-                >
-                    <span class="sr-only">Menu</span>
-                    <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
-                        <circle cx="16" cy="16" r="2" />
-                        <circle cx="10" cy="16" r="2" />
-                        <circle cx="22" cy="16" r="2" />
-                    </svg>
-                </button>
                 <div
                     class="origin-top-right z-10 absolute top-full right-0 min-w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"                
                     @click.outside="open = false"
@@ -44,13 +31,12 @@
                         </li>
                     </ul>
                 </div>
+                <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Penitia Pemilihan Suara</h2>
             </div>
         </header>
-        <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Acme Advanced</h2>
-        <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Sales</div>
+        <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total</div>
         <div class="flex items-start">
-            <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">${{ number_format($dataFeed->sumDataSet(2, 1), 0) }}</div>
-            <div class="text-sm font-semibold text-white px-1.5 bg-amber-500 rounded-full">-14%</div>
+            <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $dataFeed }}</div>
         </div>
     </div>
     <!-- Chart built with Chart.js 3 -->
