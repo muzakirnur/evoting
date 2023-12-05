@@ -37,6 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     Route::get('rekap/suara/{id}', [ExportPDFController::class, 'perolehanSuara'])->name('export.perolehan-suara');
+    Route::get('rekap/catatan/{id}', [ExportPDFController::class, 'rekapCatatan'])->name('export.rekap-catatan');
 
     Route::middleware('admin')->group(function(){
         Route::get('jadwal', function(){

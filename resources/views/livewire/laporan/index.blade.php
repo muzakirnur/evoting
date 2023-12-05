@@ -15,6 +15,7 @@
                     <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" wire:click="rekap">Rekap Pemenang</button>
                     @endif
                     <button class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click="rekapHasil">Rekap Hasil</button>
+                    <button class="btn bg-cyan-500 hover:bg-cyan-600 text-white whitespace-nowrap" wire:click="rekapCatatan">Rekap Catatan</button>
                 </div>
             </div>
             <hr class="mb-4">

@@ -63,4 +63,9 @@ class Index extends Component
     {
         return redirect()->route('export.perolehan-suara', $this->schedule->id);
     }
+
+    public function rekapCatatan()
+    {
+        return redirect()->route('export.rekap-catatan', $this->schedule->id);
+    }
 }
