@@ -20,7 +20,7 @@
                     <div class="bg-white rounded-lg p-4">
                         <h1 class="font-bold text-2xl text-center mb-8">{{ $calon->nomer_urut }}</h1>
                         <div class="overflow-hidden mx-auto mb-8">
-                            <img src="{{ asset('storage/'.$calon->foto) }}" alt="{{ $calon->nama }}" class="max-w-full rounded-lg h-80 w-80 mx-auto">
+                            <img src="{{ asset('storage/'.$calon->foto) }}" alt="{{ $calon->nama }}" class="max-w-full rounded-lg h-[120] w-80 mx-auto">
                         </div>
                         <div class="w-full mb-8 text-center">
                             <h1 class="font-semibold tex-2xl">{{ $calon->nama }}</h1>
