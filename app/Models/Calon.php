@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Rmunate\Utilities\SpellNumber;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Calon extends Model
@@ -38,6 +39,11 @@ class Calon extends Model
     public function result():HasMany
     {
         return $this->hasMany(Result::class);
+    }
+
+    public function spellNumber()
+    {
+        return SpellNumber::value($this->vote)->locale('id_ID', SpellNumber::SPECIFIC_LOCALE)->toLetters();
     }
 
 }

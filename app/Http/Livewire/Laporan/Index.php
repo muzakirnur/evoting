@@ -61,7 +61,6 @@ class Index extends Component
 
     public function rekapHasil()
     {
-        $data = Calon::query()->with('schedule')->where('schedule_id', $this->schedule->id)->get();
-        $pdf = Pdf::loadView('export.hasil',$data);
+        return redirect()->route('export.perolehan-suara', $this->schedule->id);
     }
 }

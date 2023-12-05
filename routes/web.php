@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportPDFController;
+use App\Models\Calon;
 use App\Models\Schedule;
 
 /*
@@ -33,6 +35,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return view('pages.vote.index', compact('schedule'));
         })->name('vote.index');
     });
+
+    Route::get('rekap/suara/{id}', [ExportPDFController::class, 'perolehanSuara'])->name('export.perolehan-suara');
 
     Route::middleware('admin')->group(function(){
         Route::get('jadwal', function(){
