@@ -33,9 +33,9 @@ class Pilih extends ModalComponent
         $vote = Vote::create([
             'schedule_id' => $this->schedule,
             'user_id' => auth()->id(),
-            'pilihan' => hash('sha256', $this->nomerUrut),
+            'pilihan' => hash('sha256', $this->nomerUrut . date('H:i:s', strtotime(now()))),
         ]);
-        $plainText = hash('sha256', $vote->pilihan);
+        $plainText = $vote->pilihan;
         $pad = OneTimePad::generatePad($plainText);
         $chiperText = OneTimePad::encrypt($plainText, $pad);
         $decrypted_plaintext = OneTimePad::decrypt($chiperText, $pad);
