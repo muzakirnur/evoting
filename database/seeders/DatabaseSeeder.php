@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DashboardTableSeeder::class,
         ]);
-        User::factory(1000)->create();
+        // User::factory(1000)->create();
         User::create([
             'name' => 'Admin',
             'username' => 'admin',

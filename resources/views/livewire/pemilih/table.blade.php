@@ -13,6 +13,7 @@
                     </select>
                 </div>
                 <div class="w-full lg:w-1/2 mb-4 lg:text-end align-middle text-center">
+                    <button class="btn bg-green-500 hover:bg-green-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'pemilih.import')">Import Pemilih</button>
                     <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'pemilih.add')">Tambah Pemilih</button>
                 </div>
             </div>
@@ -58,7 +59,7 @@
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">
                                 <p class="mb-0 text-sm font-semibold leading-tight">
-                                    {{ $row->tempat_lahir, date('d F Y', strtotime($row->tanggal_lahir)) }}
+                                    {{ $row->tempat_lahir .', ' .date('d F Y', strtotime($row->tanggal_lahir)) }}
                                 </p>
                             </td>
                             <td class="p-2 bg-transparent border-b whitespace-nowrap shadow-transparent text-center">

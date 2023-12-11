@@ -16,6 +16,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "rmunate/spell-number": "^4.2",
         "tonysm/rich-text-laravel": "^1.7",
         "wire-elements/modal": "^1.0.0"
