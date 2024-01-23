@@ -14,10 +14,10 @@
                 <span class="font-medium">Anda Sudah Memilih!</span> Terima Kasih atas Partisipasinya!
               </div>
             @else
-            <div class="grid grid-cols-3 grid-flow-col gap-4">
+            <div class="grid grid-cols-3 gap-4">
                 @foreach ($data as $calon)
-                <div class="grid-gap-4">
-                    <div class="bg-white rounded-lg p-4">
+                <div class="h-full">
+                    {{-- <div class="bg-white rounded-lg p-4">
                         <h1 class="font-bold text-2xl text-center mb-8">{{ $calon->nomer_urut }}</h1>
                         <div class="overflow-hidden mx-auto mb-8">
                             <img src="{{ asset('storage/'.$calon->foto) }}" alt="{{ $calon->nama }}" class="max-w-full rounded-lg h-[120] w-80 mx-auto">
@@ -30,6 +30,24 @@
                             {!! $calon->visi_misi !!}
                         </div>
                         <div class="w-full">
+                            <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'vote.pilih', {{ json_encode(['calon' => $calon->id]) }})">Pilih</button>
+                        </div>
+                    </div> --}}
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div>
+                            <img class="rounded-t-lg h-[360px] w-full" src="{{ asset('storage/'.$calon->foto) }}" alt="{{ $calon->nama }}">
+                        </div>
+                        <div class="p-2">
+                        <h1 class="font-bold text-2xl text-center">{{ $calon->nomer_urut }}</h1>
+                        </div>
+                        <div class="w-full mb-4 text-center">
+                            <h1 class="font-semibold tex-2xl">{{ $calon->nama }}</h1>
+                            <p class="text-base font-inter">{{ $calon->tempat_lahir .', '. date('d F Y', strtotime($calon->tanggal_lahir)) }}</p>
+                        </div>
+                        <div class="w-full mb-8 overflow-auto h-80 p-4">
+                            {!! $calon->visi_misi !!}
+                        </div>
+                        <div class="w-full p-4">
                             <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'vote.pilih', {{ json_encode(['calon' => $calon->id]) }})">Pilih</button>
                         </div>
                     </div>
@@ -53,34 +71,36 @@
     @endif
 </div>
 @push('custom-scripts')
-    <script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("{{ $start }}").getTime();
+@if (now() >= $start)  
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("{{ $start }}").getTime();
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
+// Update the count down every 1 second
+var x = setInterval(function() {
 
-    // Get today's date and time
-    var now = new Date().getTime();
+// Get today's date and time
+var now = new Date().getTime();
 
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
+// Find the distance between now and the count down date
+var distance = countDownDate - now;
 
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// Time calculations for days, hours, minutes and seconds
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Display the result in the element with id="demo"
-    document.getElementById("timer").innerHTML = days + " Hari " + hours + " Jam "
-    + minutes + " Menit " + seconds + " Detik ";
+// Display the result in the element with id="demo"
+document.getElementById("timer").innerHTML = days + " Hari " + hours + " Jam "
++ minutes + " Menit " + seconds + " Detik ";
 
-    // If the count down is finished, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        Livewire.emit('vote-added')
-    }
-    }, 1000);
+// If the count down is finished, write some text
+if (distance < 0) {
+    clearInterval(x);
+    Livewire.emit('vote-added')
+}
+}, 1000);
 </script>
+@endif
 @endpush
