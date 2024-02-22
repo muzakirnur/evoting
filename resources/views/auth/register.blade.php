@@ -5,15 +5,21 @@
         @csrf
         <div class="space-y-4">
             <div>
-                <x-jet-label for="name">{{ __('Full Name') }} <span class="text-rose-500">*</span></x-jet-label>
+                <x-jet-label for="name">{{ __('Nama Lengkap') }} <span class="text-rose-500">*</span></x-jet-label>
                 <x-jet-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-
             <div>
-                <x-jet-label for="email">{{ __('Email Address') }} <span class="text-rose-500">*</span></x-jet-label>
-                <x-jet-input id="email" type="email" name="email" :value="old('email')" required />
+                <x-jet-label for="username">{{ __('Nomer Induk Keluarga') }} <span class="text-rose-500">*</span></x-jet-label>
+                <x-jet-input id="username" type="text" name="username" :value="old('username')" required />
             </div>
-
+            <div>
+                <x-jet-label for="alamat">{{ __('Alamat') }} <span class="text-rose-500">*</span></x-jet-label>
+                <x-jet-input id="alamat" type="text" name="alamat" :value="old('alamat')" required />
+            </div>
+            <div>
+                <x-jet-label for="dob">{{ __('Tanggal Lahir') }} <span class="text-rose-500">*</span></x-jet-label>
+                <x-jet-input id="dob" type="date" name="dob" :value="old('dob')" required />
+            </div>
             <div>
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" type="password" name="password" required autocomplete="new-password" />
@@ -27,12 +33,12 @@
         <div class="flex items-center justify-between mt-6">
             <div class="mr-1">
                 <label class="flex items-center" name="newsletter" id="newsletter">
-                    <input type="checkbox" class="form-checkbox" />
-                    <span class="text-sm ml-2">Email me about product news.</span>
+                    {{-- <input type="checkbox" class="form-checkbox" />
+                    <span class="text-sm ml-2">Email me about product news.</span> --}}
                 </label>
             </div>
             <x-jet-button>
-                {{ __('Sign Up') }}
+                {{ __('Daftar') }}
             </x-jet-button>                
         </div>
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -53,7 +59,7 @@
     <!-- Footer -->
     <div class="pt-5 mt-6 border-t border-slate-200">
         <div class="text-sm">
-            {{ __('Have an account?') }} <a class="font-medium text-indigo-500 hover:text-indigo-600" href="{{ route('login') }}">{{ __('Sign In') }}</a>
+            {{ __('Sudah Punya Akun ?') }} <a class="font-medium text-indigo-500 hover:text-indigo-600" href="{{ route('login') }}">{{ __('Sign In') }}</a>
         </div>
     </div>
 </x-authentication-layout>
