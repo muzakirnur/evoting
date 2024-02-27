@@ -22,43 +22,45 @@ Route::redirect('/', 'login');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    // Route for the getting the data feed
-    Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
-
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/data-suara', [DataFeedController::class, 'dataSuara'])->name('data-suara');
-    Route::get('/data-pemilih', [DataFeedController::class, 'dataPemilih'])->name('data-pemilih');
-
-    Route::middleware('pemilih')->group(function(){
-        Route::get('vote', function(){
-            $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
-            return view('pages.vote.index', compact('schedule'));
-        })->name('vote.index');
-    });
-
-    Route::get('rekap/suara/{id}', [ExportPDFController::class, 'perolehanSuara'])->name('export.perolehan-suara');
-    Route::get('rekap/catatan/{id}', [ExportPDFController::class, 'rekapCatatan'])->name('export.rekap-catatan');
-
-    Route::middleware('admin')->group(function(){
-        Route::get('jadwal', function(){
-            return view('pages.jadwal.index');
-        })->name('jadwal.index');
-
-        Route::get('panitia', function(){
-            return view('pages.panitia.index');
-        })->name('panitia.index');
-
-        Route::get('calon', function(){
-            return view('pages.calon.index');
-        })->name('calon.index');
-
-        Route::get('pemilih', function(){
-            return view('pages.pemilih.index');
-        })->name('pemilih.index');
-
-        Route::get('laporan', function(){
-            return view('pages.laporan.index');
-        })->name('laporan.index');
+    Route::middleware('webauthn')->group(function(){
+        // Route for the getting the data feed
+        Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
+    
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/data-suara', [DataFeedController::class, 'dataSuara'])->name('data-suara');
+        Route::get('/data-pemilih', [DataFeedController::class, 'dataPemilih'])->name('data-pemilih');
+    
+        Route::middleware('pemilih')->group(function(){
+            Route::get('vote', function(){
+                $schedule = Schedule::query()->where('tahun', date('Y', strtotime(now())))->first();
+                return view('pages.vote.index', compact('schedule'));
+            })->name('vote.index');
+        });
+    
+        Route::get('rekap/suara/{id}', [ExportPDFController::class, 'perolehanSuara'])->name('export.perolehan-suara');
+        Route::get('rekap/catatan/{id}', [ExportPDFController::class, 'rekapCatatan'])->name('export.rekap-catatan');
+    
+        Route::middleware('admin')->group(function(){
+            Route::get('jadwal', function(){
+                return view('pages.jadwal.index');
+            })->name('jadwal.index');
+    
+            Route::get('panitia', function(){
+                return view('pages.panitia.index');
+            })->name('panitia.index');
+    
+            Route::get('calon', function(){
+                return view('pages.calon.index');
+            })->name('calon.index');
+    
+            Route::get('pemilih', function(){
+                return view('pages.pemilih.index');
+            })->name('pemilih.index');
+    
+            Route::get('laporan', function(){
+                return view('pages.laporan.index');
+            })->name('laporan.index');
+        });
     });
     
     Route::fallback(function() {

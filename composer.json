@@ -9,8 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "asbiin/laravel-webauthn": "^4.2",
         "barryvdh/laravel-dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/psr7": "^2.6",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.14.1",
