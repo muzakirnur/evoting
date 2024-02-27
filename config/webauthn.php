@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
 use LaravelWebauthn\Models\WebauthnKey;
 
 return [
@@ -39,7 +40,7 @@ return [
     |
     */
 
-    'username' => 'email',
+    'username' => 'username',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,8 +110,8 @@ return [
     */
 
     'redirects' => [
-        'login' => 'dashboard',
-        'register' => 'dashboard',
+        'login' => RouteServiceProvider::HOME,
+        'register' => RouteServiceProvider::HOME,
     ],
 
     /*
