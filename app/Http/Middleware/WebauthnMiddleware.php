@@ -28,7 +28,7 @@ class WebauthnMiddleware
             //         return Redirect::guest(route('webauthn.login'));
             //     }
             // }
-            if(Webauthn::canRegister($request->user())){
+            if(Webauthn::canRegister($request->user()) == true){
                 return Redirect::to(route('webauthn.create'));
             }else{
                 return Redirect::to(route('webauthn.login'));
