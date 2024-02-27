@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'pemilih' => \App\Http\Middleware\PemilihMiddleware::class,
         'webauthn' => \App\Http\Middleware\WebauthnMiddleware::class,
+        // 'webauthn' => \LaravelWebauthn\Http\Middleware\WebauthnMiddleware::class,
     ];
 }
