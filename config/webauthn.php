@@ -109,8 +109,8 @@ return [
     */
 
     'redirects' => [
-        'login' => null,
-        'register' => null,
+        'login' => 'dashboard',
+        'register' => 'dashboard',
     ],
 
     /*
