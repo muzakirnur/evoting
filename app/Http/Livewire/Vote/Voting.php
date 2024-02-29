@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Vote;
 
 use App\Models\Calon;
+use App\Models\OneTimePad;
 use App\Models\Schedule;
 use App\Models\Vote;
 use Livewire\Component;
@@ -33,5 +34,24 @@ class Voting extends Component
         return view('livewire.vote.voting', [
             'data' => $this->calon,
         ]);
+    }
+
+    public function saveCalon(Calon $calon)
+    {
+        $nomerUrut = $calon->nomer_urut;
+        $vote = Vote::create([
+            'schedule_id' => $this->scheduleID,
+            'user_id' => auth()->id(),
+            'pilihan' => hash('sha256', $nomerUrut . date('H:i:s', strtotime(now()))),
+        ]);
+        $plainText = $vote->pilihan;
+        $pad = OneTimePad::generatePad($plainText);
+        $chiperText = OneTimePad::encrypt($plainText, $pad);
+        $decrypted_plaintext = OneTimePad::decrypt($chiperText, $pad);
+        if($plainText == $decrypted_plaintext){
+            $calon = Calon::query()->where('schedule_id', $this->scheduleID)->where('nomer_urut', $nomerUrut)->first();
+            $calon->update(['vote' => $calon->vote+1]);
+        }
+        return redirect()->to('/')->with('success', 'Berhasil melakukan pemilihan!');
     }
 }

@@ -1,6 +1,6 @@
 <div>
     <div class="bg-white rounded-lg p-4">
-        <form wire:submit.prevent='submit'>
+        <form wire:submit.prevent='submit' id="confirmSubmit">
             <h1 class="font-semibold text-lg">Konfirmasi Pilihan!</h1>
             <hr>
             <div class="p-4">
@@ -8,7 +8,7 @@
             </div>
             <div class="flex flex-wrap">
                 <div class="w-1/2 p-2">
-                    <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" type="submit">Yakin</button>
+                    <button onclick="startSign()" type="button" class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Yakin</button>
                 </div>
                 <div class="w-1/2 p-2">
                     <button class="btn w-full bg-slate-500 hover:bg-slate-600 text-white whitespace-nowrap" type="button" wire:click='closeModal()'>Batal</button>
@@ -17,3 +17,10 @@
         </form>
     </div>
 </div>
+@push('custom-scripts')
+    <script>
+        Livewire.on('authSuccess', () => {
+            console.log('Pilih Selected');
+        })
+    </script>
+@endpush

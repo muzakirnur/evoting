@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <script src="https://kit.fontawesome.com/e5736c35e5.js" crossorigin="anonymous"></script>
+        <script src="{!! secure_asset('vendor/webauthn/webauthn.js') !!}"></script>
 
         <!-- Styles -->
         @livewireStyles

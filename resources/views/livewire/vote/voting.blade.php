@@ -48,7 +48,8 @@
                             {!! $calon->visi_misi !!}
                         </div>
                         <div class="w-full p-4">
-                            <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" wire:click="$emit('openModal', 'vote.pilih', {{ json_encode(['calon' => $calon->id]) }})">Pilih</button>
+                            <button class="btn w-full bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap" type="button" onclick="startSign({{ $calon->id }})">Pilih</button>
+                            <button class="hidden" type="submit" id="calon{{ $calon->id }}" wire:click="saveCalon({{ $calon->id }})"></button>
                         </div>
                     </div>
                 </div>
@@ -103,4 +104,10 @@ if (distance < 0) {
 }, 1000);
 </script>
 @endif
+<script>
+    Livewire.on('webauthnSuccess', calonId => {
+        var button = document.getElementById('calon'+calonId);
+        button.click();
+    })
+</script>
 @endpush
