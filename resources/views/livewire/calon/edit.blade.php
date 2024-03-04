@@ -40,6 +40,11 @@
                     </select>
                     @error('pendidikan') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
+                <div class="w-1/2 mb-4 p-2">
+                    <label for="pendidikan" class="text-base font-semibold">Pekerjaan</label>
+                    <input type="text" placeholder="Pekerjaan" name="pekerjaan" id="pekerjaan" wire:model.lazy='pekerjaan' class="rounded-lg w-full focus:ring-indigo-500 focus:ring-inset ring-1 ring-slate-300 focus:ring-2 border-0">
+                    @error('pekerjaan') <span class="error text-red-500">{{ $message }}</span> @enderror
+                </div>
                 <div class="w-1/2 p-2 mb-4">
                     <label for="foto" class="text-base font-semibold">Foto</label>
                     <label class="block">

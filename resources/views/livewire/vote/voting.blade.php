@@ -44,6 +44,8 @@
                         <div class="w-full mb-4 text-center">
                             <h1 class="font-semibold tex-2xl">{{ $calon->nama }}</h1>
                             <p class="text-base font-inter">{{ $calon->tempat_lahir .', '. date('d F Y', strtotime($calon->tanggal_lahir)) }}</p>
+                            <p class="text-base font-inter">Pekerjaan : {{ $calon->pekerjaan }}</p>
+                            <p class="text-base font-inter">Pendidikan : {{ $calon->pendidikan }}</p>
                         </div>
                         <div class="w-full mb-8 overflow-auto h-80 p-4">
                             {!! $calon->visi_misi !!}

@@ -20,6 +20,7 @@ class Add extends ModalComponent
     public $tanggalLahir;
     public $foto;
     public $pendidikan;
+    public $pekerjaan;
     public $visi_misi = '';
 
     public function rules()
@@ -56,6 +57,7 @@ class Add extends ModalComponent
                 'alamat' => $this->alamat,
                 'foto' => $this->foto->store('calon', 'public'),
                 'pendidikan' => $this->pendidikan,
+                'pekerjaan' => $this->pekerjaan,
                 'visi_misi' => $this->visi_misi,
             ]
         );

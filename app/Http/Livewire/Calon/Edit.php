@@ -21,6 +21,7 @@ class Edit extends ModalComponent
     public $tanggalLahir;
     public $foto;
     public $pendidikan;
+    public $pekerjaan;
     public $visi_misi = '';
 
     public function mount(Calon $calon)
@@ -31,6 +32,7 @@ class Edit extends ModalComponent
         $this->tempatLahir = $calon->tempat_lahir;
         $this->tanggalLahir = $calon->tanggal_lahir;
         $this->pendidikan = $calon->pendidikan;
+        $this->pekerjaan = $calon->pekerjaan;
         $this->visi_misi = $calon->visi_misi->toTrixHtml();
     }
 
@@ -41,6 +43,7 @@ class Edit extends ModalComponent
             'tempatLahir' => ['required', 'string', 'max:255'],
             'tanggalLahir' => ['required', 'date'],
             'pendidikan' => ['required', 'string', 'max:255'],
+            'pekerjaan' => ['required', 'string', 'max:255'],
             'visi_misi' => ['required'],
             'foto' => ['nullable', 'file', 'mimes:jpg,jpeg,png']
         ];
@@ -61,6 +64,7 @@ class Edit extends ModalComponent
                 'tempat_lahir' => $this->tempatLahir,
                 'tanggal_lahir' => $this->tanggalLahir,
                 'pendidikan' => $this->pendidikan,
+                'pekerjaan' => $this->pekerjaan,
                 'visi_misi' => $this->visi_misi,
             ]);
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('foto');
             $table->string('alamat');
             $table->string('pendidikan');
+            $table->string('pekerjaan');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->longText('visi_misi');
