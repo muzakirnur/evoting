@@ -13,6 +13,7 @@
             <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 text-center">
                 <span class="font-medium">Anda Sudah Memilih!</span> Terima Kasih atas Partisipasinya!
               </div>
+            <x-dashboard.dashboard-card-06 />
             @else
             <div class="grid grid-cols-3 gap-4">
                 @foreach ($data as $calon)
